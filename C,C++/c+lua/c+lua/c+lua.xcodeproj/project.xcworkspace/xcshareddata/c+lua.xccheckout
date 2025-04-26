@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>AE8E10A5-22CA-40EA-AEF7-F173D36C25E0</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1A3046402BDC015116265628F2D6709F83BEDBBE</key>
+		<string>developer.playcrab.com:linying/dzm2.git</string>
+	</dict>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1A3046402BDC015116265628F2D6709F83BEDBBE</key>
+		<string>dzm2/</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>developer.playcrab.com:linying/dzm2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1A3046402BDC015116265628F2D6709F83BEDBBE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1A3046402BDC015116265628F2D6709F83BEDBBE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>dzm2</string>
+		</dict>
+	</array>
+</dict>
+</plist>

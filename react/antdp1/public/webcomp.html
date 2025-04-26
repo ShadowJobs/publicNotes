@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      color: red;
+    }
+  </style>
+  <script>
+    class MyElement extends HTMLElement {
+      constructor() {
+        super();
+        this.mutationObserver = new MutationObserver(() => this.updateContent());
+      }
+
+      connectedCallback() {
+        this.mutationObserver.observe(this, { childList: true });
+        this.updateContent();
+      }
+
+      updateContent() {
+        this.mutationObserver.disconnect(); // 先断开监听
+        this.textContent = '';
+        this.innerHTML = '<h2>1 使用MutationObserver，并且要清除textContent.本段文字是被替换了的</h2>';
+        this.mutationObserver.observe(this, { childList: true }); // 再重新开始监听
+      }
+    }
+    customElements.define('my-element', MyElement);
+    class MyElement1 extends HTMLElement {
+      connectedCallback() { this.innerHTML = '<h2>2, element1 inner。本段文字是innerHtml，与下面3行共存，没有替换</h2>'; }
+    }
+    customElements.define('ele-me', MyElement1);
+
+    class MyElement2 extends HTMLElement {
+      constructor() {
+        super();
+        this.attachShadow({ mode: 'open' });
+      }
+      connectedCallback() {
+        // 坑：这里使用this.shadowRoot?.innerHTML = ``; 会导致前面两个element渲染出bug
+        this.shadowRoot.innerHTML = `
+              <style>
+                 p { color: blue; }
+              </style>
+              <p>3 本段使用了shadowDom!因此不显示原本的children</p>
+          `;
+      }
+    }
+    customElements.define('el-shadow-root', MyElement2);
+  </script>
+</head>
+
+<body>
+  <my-element>
+    <h2>aaaaa</h2>
+  </my-element> <!-- use the custom element -->
+  <ele-me>
+    <h2>cccccc</h2>aa<span>bb</span>
+    <div>ccccdddd</div>
+  </ele-me>
+  <el-shadow-root>
+    <h3>bbbbb</h3>
+  </el-shadow-root>
+  <script>
+    const h2 = document.querySelector('h2');
+    console.log(h2)
+    const p = document.querySelector('p');
+    console.log(p); // This will log null
+  </script>
+</body>
+
+</html>

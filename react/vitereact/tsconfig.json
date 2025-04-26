@@ -1,0 +1,25 @@
+{
+  "compilerOptions": { // 编译器选项
+    "target": "ESNext", // 目标版本
+    "useDefineForClassFields": true, // 为类字段使用define
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // 引入的库
+    "allowJs": false, // 允许使用JS文件
+    "skipLibCheck": true, // 跳过库检查
+    "esModuleInterop": false, // 不使用esModuleInterop
+    "allowSyntheticDefaultImports": true, // 允许合成默认导入
+    "strict": true, // 严格模式
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致
+    "module": "ESNext", // 模块类型
+    "moduleResolution": "Node", // 模块解析方式
+    "resolveJsonModule": true, // 解析JSON模块
+    "isolatedModules": true, // 隔离模块
+    "noEmit": true, // 不生成输出文件
+    "jsx": "react-jsx", // JSX语法
+    "baseUrl": ".", // 基本路径
+    "paths": {
+      "@/*": ["./src/*"] // 路径别名
+    }
+  },
+  "include": ["src"], // 包含的文件
+  "references": [{ "path": "./tsconfig.node.json" }] // 引用的tsconfig文件
+}

@@ -1,0 +1,4 @@
+.import-test{
+  background-color: yellow;
+  color: var(--cv-color, white);
+}

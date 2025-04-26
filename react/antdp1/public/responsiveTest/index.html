@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>响应式原理</title>
+  </head>
+  <body>
+    响应式原理
+    <div>通过观察者模式，将所有的对象属性，加上get,set方法，get时，在一个全局对象里记录调用get的函数，并去重，记录到一个数组/hash里</div>
+    <div>set时，调用所有的set里记录的函数</div>
+    
+    <div class="card">
+      <p id="price"></p>
+      <p id="age"></p>
+    </div>
+    <input type="text" oninput="user.price = this.value" />
+    <input type="date" onchange="user.birth = this.value" />
+    <script src="/responsiveTest/euv.js"></script>
+    <script src="/responsiveTest/index.js"></script>
+  </body>
+</html>

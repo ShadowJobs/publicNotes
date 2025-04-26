@@ -1,0 +1,25 @@
+{
+  "name": "vue-comps",
+  "version": "1.0.0",
+  "main": "dist/vue-comps.umd.js",
+  "module": "dist/vue-comps.es.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-comps.es.js",
+      "require": "./dist/vue-comps.umd.js"
+    }
+  },
+  "scripts": {
+    "build": "vite build"
+  },
+  "peerDependencies": {
+    "vue": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.0.0",
+    "vite-plugin-dts": "^4.2.2"
+  }
+}

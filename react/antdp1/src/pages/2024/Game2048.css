@@ -1,0 +1,115 @@
+/* 游戏容器 */
+.game2048 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 分数显示 */
+.game2048 .score {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #776e65;
+}
+
+/* 游戏板 */
+.game2048 .board {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 15px;
+  background-color: #bbada0;
+  border-radius: 6px;
+  padding: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 格子 */
+.game2048 .tile {
+  width: 100px;
+  height: 100px;
+  background-color: #cdc1b4;
+  border-radius: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  font-weight: bold;
+  color: #776e65;
+  position: relative; /* Important */
+  transition: transform 0.2s ease;
+}
+
+/* 不同数值的格子颜色 */
+.game2048 .tile-2 { background-color: #eee4da; }
+.game2048 .tile-4 { background-color: #ede0c8; }
+.game2048 .tile-8 { background-color: #f2b179; color: #f9f6f2; }
+.game2048 .tile-16 { background-color: #f59563; color: #f9f6f2; }
+.game2048 .tile-32 { background-color: #f67c5f; color: #f9f6f2; }
+.game2048 .tile-64 { background-color: #f65e3b; color: #f9f6f2; }
+.game2048 .tile-128 { background-color: #edcf72; color: #f9f6f2; }
+.game2048 .tile-256 { background-color: #edcc61; color: #f9f6f2; }
+.game2048 .tile-512 { background-color: #edc850; color: #f9f6f2; }
+.game2048 .tile-1024 { background-color: #edc53f; color: #f9f6f2; }
+.game2048 .tile-2048 { background-color: #edc22e; color: #f9f6f2; }
+
+/* 动画效果 */
+@keyframes moveX {
+  to {
+    transform: translateX(var(--move-num));
+  }
+}
+
+@keyframes moveY {
+  to {
+    transform: translateY(var(--move-num));
+  }
+}
+
+@keyframes appear {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes merge {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.game2048 .tile-new {
+  animation: appear 0.2s ease-in-out;
+}
+
+.game2048 .tile-merged {
+  animation: merge 0.2s ease-in-out;
+}
+
+.game2048 .move-hor {
+  /* animation: moveX 0.2s forwards; */
+}
+
+.game2048 .move-vert {
+  /* animation: moveY 0.2s forwards; */
+}
+
+/* 响应式设计 */
+@media (max-width: 600px) {
+  .game2048 .tile {
+    width: 70px;
+    height: 70px;
+    font-size: 24px;
+  }
+
+  .score {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,3 @@
+char funcD(){
+    return 'D';    
+}

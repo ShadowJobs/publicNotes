@@ -1,0 +1,22 @@
+
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ES2015",
+    "declaration": true, // 生成对应的.d.ts文件, 对于js的生成规则，见tsconfjg的md文件
+    "outDir": "./dist",
+    "declarationDir": "./types", // 生成对应的.d.ts文件的目录
+    "allowJs": true, // js文件也会被编译，并生成对应的.d.ts文件
+    // "checkJs": true, // 检查js文件的类型,利用JSDoc注释来检查，例如本项目里add.js有注释，不会报错，其他的没有注释的minus.js会报错
+
+    "skipLibCheck": true, // 跳过第三方的lib检查，使用 "skipLibCheck": true 不会导致 TypeScript 编译器忽略您的应用代码中的类型错误。它只是跳过了对所有 .d.ts 文件的类型检查。这意味着：
+    // 您项目中的 TypeScript 代码 (*.ts, *.tsx) 仍然会被完全检查。
+    // 来自于第三方声明文件的类型错误不会阻止编译过程。
+    // 如果第三方库之间的类型定义有冲突，这些冲突也不会阻碍编译。
+
+    // "typeRoots": ["./types"], // 用于指定查找类型声明文件的根目录，给编译器用的。也就是build之前的检查
+    "strict": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.ts"]
+}

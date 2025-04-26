@@ -1,0 +1,6 @@
+packages:
+  - "sub"
+  - "ly-utils"
+  - "complib/react-comps"
+  - "complib/vue-comps"
+  - "vue3proj"

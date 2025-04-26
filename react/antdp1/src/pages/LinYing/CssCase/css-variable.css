@@ -1,0 +1,106 @@
+/* @charset "ascii"; 这一句好像写什么都没用，默认是识别汉字的
+ */
+@import url("./css-variableimport.css");
+:root{
+  --cv-color: red;
+  --pd: 10px;
+  --third-color:red;
+}
+
+/* 拖动浏览器尺寸，当宽度小于500时，下面的规则就会生效 */
+@media screen and (max-width: 1000px) {
+  .cv-first-row啊 {
+    background-color: var(--cv-color,yellow); /* yellow是当color没有定义时的默认值 */
+    color:white;
+  }
+}
+.calculate{
+  background-color: var(--cv-color);
+  padding: calc(var(--pd) * 2);
+  color:white;
+}
+.third{
+  background-color: var(--third-color);
+  color:white;
+}
+
+/* 同时具有#id1和类.cl1时生效 */
+:where(#id1.cl1){
+  background-color:yellow;
+}
+.cl1{
+  background-color:blue;
+  color:white;
+}
+#id2#id2{
+  background-color:blue;
+  color:white;
+}
+#id2{
+  background-color:red;
+  color:white;
+}
+.vv:not([class*=cl]){
+  font-weight: 700;
+  font-size: 120%;
+  background-color:red;
+  color:white;
+}
+
+#id3 #parent {
+  color: green;
+}
+
+#id3 h1 {
+  color: purple;
+}
+
+.flex-layout{
+  display: flex;
+  margin-bottom: 2px;
+}
+.gray-border{
+  border: 1px solid gray;
+}
+.flex-layout.order>:nth-child(1){
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.grid-layout{
+  display: grid;
+  margin-bottom: 2px;
+}
+
+.grid-layout > div {
+  border-radius: 5px;
+  padding: 10px;
+  background-color: rgb(207,232,220);
+  border: 2px solid rgb(79,185,227);
+}
+
+.garea{
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50px 50px;
+  grid-template-areas:
+    "a a b"
+    "a a b"
+    "c . b";
+}
+
+.container {
+  display: flex;
+  height: 30vh;
+  width: 100%;
+}
+
+.code-input {
+  background-color: lightblue;
+  /* transition: width 0.2s; */
+}
+
+.resizer {
+  width: 18px;
+  background-color: #ccc;
+  cursor: col-resize;
+}

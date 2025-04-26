@@ -1,0 +1,26 @@
+# aiohttp==3.8.6
+# aiosignal==1.3.1
+# annotated-types==0.6.0
+# anyio==3.7.1
+# async-timeout==4.0.3
+# certifi==2023.5.7
+# chardet==3.0.4
+# charset-normalizer==3.1.0
+# distro==1.8.0
+blinker==1.8.2
+click==8.1.7
+Flask==3.0.0
+Flask-Cors==4.0.0
+frozenlist==1.4.0
+sqlalchemy==2.0.36
+flask_sqlalchemy==3.1.1
+pymysql==1.1.1
+redis==4.1.4
+flask_compress==1.17
+attrs==23.1.0
+apscheduler
+requests
+werkzeug
+flasgger==0.9.7.1
+cryptography
+Flask-Migrate>=4.0.4

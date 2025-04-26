@@ -1,0 +1,77 @@
+/* 修改后的菜单容器 */
+.menu-container {
+  /* 修改高度计算方式 */
+  height: calc(100% - 112px); /* 改用百分比适配 */
+  max-height: unset; /* 移除原有限制 */
+  overflow-y: auto;
+  -ms-overflow-style: 3px;
+  
+  /* 新增弹性布局支持 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 添加移动端适配 */
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    /* 使用动态高度计算 */
+    height: calc(var(--vh, 1vh) * 100) !important;
+    
+    /* 增强布局稳定性 */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ant-layout-sider-children {
+    /* 动态高度分配 */
+    height: calc(100% - 48px) !important; /* 48px给折叠按钮 */
+    flex: 1;
+  }
+
+  .menu-container {
+    /* 移动端高度优化 */
+    height: calc(100% - 64px) !important; /* 64px给顶部logo */
+    max-height: none;
+  }
+}
+
+/* 折叠按钮适配 */
+.ant-layout-sider-trigger {
+  /* 保留原有样式 */
+  position: fixed;
+  bottom: 0;
+  
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    position: static !important; /* 改为自然流布局 */
+    margin-top: auto; /* 自动填充底部 */
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+}
+
+.menu-container::-webkit-scrollbar {
+  scrollbar-width: thin; /* Firefox property */
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;/* Firefox property */
+  visibility: hidden;
+}
+
+/* Show scrollbar when hovering or actively scrolling */
+.menu-container:hover,
+.menu-container:active {
+  scrollbar-width: thin; /* Firefox */
+  -ms-overflow-style: auto; /* IE and Edge */
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;/* Firefox property */
+
+}
+
+.menu-container:hover::-webkit-scrollbar,
+.menu-container:active::-webkit-scrollbar {
+  visibility: visible;
+  width: 3px;
+}
+
+.menu-container:hover::-webkit-scrollbar-thumb,
+.menu-container:active::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 3px;
+}

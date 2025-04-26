@@ -1,0 +1,79 @@
+@import '~antd/es/style/variable.less';
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.colorWeak {
+  filter: invert(80%);
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+.ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
+  left: unset;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+// ul,
+// ol {
+//   list-style: none;
+// }
+
+@media (max-width: @screen-xs) {
+  .ant-table {
+    width: 100%;
+    overflow-x: auto;
+    &-thead > tr,
+    &-tbody > tr {
+      > th,
+      > td {
+        white-space: pre;
+        > span {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// Compatible with IE11
+@media screen and(-ms-high-contrast: active), (-ms-high-contrast: none) {
+  body .ant-design-pro > .ant-layout {
+    min-height: 100vh;
+  }
+}
+
+#gaodemap {width:100%; height: 80vh; }  
+
+.tag-input{
+  width:200px;
+}
+
+.maptable td{
+  padding:5px;
+}
+
+.ant-pro-sider-mobile {
+  @media (max-width: 767px) {
+    position: fixed !important;
+    height: 100vh !important;
+    z-index: 1000;
+    transition: transform 0.3s;
+    
+    &.ant-pro-sider-hide {
+      transform: translateX(-100%);
+    }
+  }
+}

@@ -1,0 +1,15 @@
+
+/* customStyles.css */
+.custom-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .custom-button.selected {
+    /* font-weight: bold; */
+    /* color: white; */
+    /* background-color: blue; */
+  }
+  

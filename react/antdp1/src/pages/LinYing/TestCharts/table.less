@@ -1,0 +1,171 @@
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table thead {
+  background: #efefef;
+}
+
+.table thead th {
+  vertical-align: bottom;
+}
+
+.table tbody + tbody {
+  border-top: 1px solid #dee2e6;
+}
+.table-bordered {
+  border: 2px solid #dee2e6;
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+}
+.table-bordered td .mes-p-value {
+  display: flex;
+  flex-direction: column;
+}
+.table-bordered td .mes-p-value-up {
+  color: green;
+}
+.table-bordered td .mes-p-value-down {
+  color: red;
+}
+.table-bordered td .mes-p-value-neutral {
+  color: #0068eb;
+}
+
+.mes-value-out-of-range {
+  background-color: #ff000050;
+}
+
+.mes-value-with-green {
+  background-color: #C4EFA5 ;
+}
+.mes-value-with-yellow {
+  background-color: yellow;
+}
+.mes-value-with-red {
+  background-color: red ;
+  color:white;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
+}
+
+table.edit-table thead th:hover,
+table.edit-table tbody td:hover {
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+table.edit-table:focus {
+  outline-color: #dee2e6;
+}
+
+.form-line {
+  height: 30px;
+  line-height: 30px;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.align-center {
+  text-align: center;
+}
+.align-left {
+  text-align: left;
+}
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  /* Position the tooltip text */
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  z-index: 1;
+  width: 120px;
+  margin-left: -60px;
+  padding: 5px 0;
+  color: #fff;
+  text-align: center;
+  background-color: #555;
+  border-radius: 6px;
+  visibility: hidden;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-color: #555 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px;
+  content: '';
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* 进制点击 */
+.prevent-click{
+  pointer-events: none;
+}
+
+.chart-show-hand:hover{
+  cursor: grab
+}
+.chart-show-hand:active{
+  cursor: grabbing
+}
+
+.anttable-p-value-neutral {
+  color: #0068eb;
+}
+
+.anttable-compare-up {
+  color: #52c41a;
+  text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+}
+
+.anttable-compare-down {
+  color: red;
+  text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+}
+
+.at-lb-mline .ant-form-item-label label{
+  white-space: normal;
+  word-break: break-all;
+}

@@ -1,0 +1,33 @@
+.copyIcon {
+  background-image: url(~@/components/assets/copy.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.copyIcon:hover {
+  background-image: url(~@/components/assets/copy-hover.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.copyIcon.copied {
+  background-image: url(~@/components/assets/copied.svg);
+}
+
+.copyIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-image: url(~@/components/assets/copy.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &:hover {
+    background-image: url(~@/components/assets/copy-hover.svg);
+    background-color: #f9fafb; // Tailwind gray-50 对应的颜色
+  }
+
+  &.copied {
+    background-image: url(~@/components/assets/copied.svg);
+  }
+}

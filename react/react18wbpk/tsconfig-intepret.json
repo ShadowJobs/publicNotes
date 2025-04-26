@@ -1,0 +1,96 @@
+{
+  "compilerOptions": {
+    "target": "es5",//用于语法检查和代码转译的目标 JavaScript 版本。不包含模块解析，模块解析由 module 选项控制。
+    // ES3:是最旧的目标输出版本，适合非常古老的 JavaScript 环境。
+    // ES5:是大多数现代浏览器都支持的 JavaScript 版本，是一个非常常见的目标选择。
+    // ES6 或 ES2015: ECMAScript 2015 (也称为 ES6) 引入了许多新的语言特性，比如类、模块、箭头函数等。
+    // ES2016: ECMAScript 2016 引入了包括数组实例的 includes 方法和幂运算符 (**)。
+    // ES2017: ECMAScript 2017 支持 async/await 等新特性。
+    // ES2018: ECMAScript 2018 引入了异步迭代和其它一些新特性。
+    // ES2019: ECMAScript 2019 添加了 Array.prototype.flat、Object.fromEntries 等功能。
+    // ES2020: ECMAScript 2020 包括 BigInt、nullish coalescing operator (??)、optional chaining (?.) 等新特性。
+    // ESNext: 指最新的 ECMAScript 草案中的功能，这个值将始终指向最新的规范。
+    // 如果您的项目中使用了 Webpack 和 Babel 来处理 TypeScript 生成的 JavaScript 代码，理论上确实可以将 target 设置为任意值
+    // 然而，在实践中，通常我们会将 TypeScript 的 target 设置为跟项目支持的环境匹配或略高的值，这样可以让 TypeScript 负责尽可能多的语言特性转换工作，
+    // 然后将剩余的特定需求交给 Babel 处理（例如，使用 Babel 的 polyfill 来支持实例方法如 Array.prototype.includes）。
+    // 设置较低的 target（如 es5）通常能确保更好的兼容性，但可能导致产出的代码更加冗长；而设置较高的 target（如 esnext）可能会输出更简洁、更现代的代码
+
+
+    "lib": ["dom", "esnext"],
+    //dom是ts自带的。lib里必须指定ts自带的库，如何查看有哪些？先找ts的安装目录：执行 which tsc，这个命令可以找到tsc命令的位置，然后找到lib目录
+    //本机为 /usr/local/lib/node_modules/typescript/lib
+    // 这些内置类型声明是由 TypeScript 团队维护的，不需要开发者手动下载或更新。它们随着 TypeScript 编译器一起自动更新。
+    // 如果你需要某个 JavaScript 库（如 React, Lodash 等）的类型声明，这通常需要单独安装相应的 @types/ 包，例如通过 npm 安装（例如 npm install @types/react）。
+    // 这样的类型声明通常不会出现在 lib 选项中，而是会通过引入特定的类型包来使用。
+
+
+    "allowJs": true,
+    "skipLibCheck": true,// 跳过所有声明文件（*.d.ts）的类型检查。
+    "esModuleInterop": true,// 启用对 ES6 构造方式和 CommonJS 导出互操作性的支持。
+    // 在 CommonJS 中，整个模块被导出为一个单独的对象，而 ES6 允许导出多个命名导出，并支持一个默认导出。
+    // 在没有启用 esModuleInterop 时，你通常需要这样导入一个 CommonJS 模块：
+      // const express = require('express'); // 这种方式与 Node.js 使用 require() 完全一致，但它不符合 ES6 模块的语法。
+      // import express from 'express';//这种写法会报错，Ts编译器报错 express 没有默认导出，因为在 CommonJS 系统中，模块本质上是导出为整个模块对象。
+    // 启用 esModuleInterop
+      // 设置 "esModuleInterop": true，ts 允许你使用import，编译器会自动处理两种模块系统之间的差异。
+      // ts 会假定一个 CommonJS 模块具有一个默认导出，并允许你使用 import ... from 语法。TypeScript 在编译过程中添加一层帮助函数（如 __importDefault），使得 CommonJS 模块可以仿佛它们具有默认导出。
+    "allowSyntheticDefaultImports": true, //allowSyntheticDefaultImports 仅影响编译器的类型检查。"esModuleInterop"已经隐含了本功能，所以可不设置
+
+
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,    // 确保在文件名的大小写上具有一致性，防止在大小写不敏感的文件系统上的问题。
+    // 模块的代码生成：'CommonJS', 'UMD', 'AMD', 'System', 'ES2015', etc.
+    "module": "esnext",// 与target的区别是，module是用于模块解析的，而target是用于语法检查和代码转译的目标 JavaScript 版本。如果两者冲突，以module为准
+    //"none": 不生成模块代码，用于全局脚本的开发。
+    // "commonjs": 输出 CommonJS 模块（适用于 Node.js）。
+    // "amd": 输出异步模块 (AMD)，用于 RequireJS 等。
+    // "umd": 输出 UMD 模块，既可以用作 AMD，也可以用作 CommonJS。（es2015以前，前端用的模块化工具）
+    // "system": 输出 SystemJS 兼容的模块。
+    // "es2015": 输出利用 ES2015 模块语法的代码。
+    // "es2020": 输出利用 ES2020 模块特性的代码。
+    // "esnext": 输出未来 ES 标准模块特性的代码。
+    // Node.js 自 v12 起开始支持 ES Modules，但需要在 package.json 中设置 "type": "module" 或者使用 .mjs 文件扩展名。
+//     我有一个文件a.ts,里面第一句是import "./b.ts" 如果tsconfig设置了module:es6,那么我的html里会有个<script src="/a.js">标签，生成的代码a.js里会保留import,但是会变成import "./b.js"，运行时，遇到import，此时会立即下载b.js文件。
+// 如果module=commonjs，那么生成的a.js里不会保留import，而是会变成require "./b.js"。（commonjs只在node中使用，并且是同步加载）
+// 如果module=amd，那么会变成requireJS里的require函数，这个函数也会立即请求下载
+// 如果最终又配合使用了webpack所有的import和require都会被webpack处理成bundle里的iife函数，不会立即下载
+
+    // 如何解析模块。
+    "moduleResolution": "node", //只有node和classic两个选项，其中classic是ts1.6之前的默认值，即将废弃，node是ts1.6之后的默认值
+    // Node.js 风格的模块解析遵循以下规则：
+    // 非相对导入:
+      // 对于像 import fs from "fs"; 或 import _ from "lodash"; 这样的非相对模块导入，Node.js 解析机制将尝试从 node_modules 目录中查找模块。
+      // 如果在当前目录的 node_modules 中没找到，它会继续在父级目录的 node_modules 中查找，一直向上递归，直到找到模块或达到文件系统的根目录。
+    // 文件扩展名处理:
+    // 在实际文件系统中查找时，TypeScript 编译器会尝试各种扩展名，如 .ts, .tsx, 或 .d.ts(如果启用了 allowJs 选项，还会包括 .js 和 .jsx)。
+    // 默认情况下，编译器会先查找同名的 TypeScript 文件 (.ts 或 .tsx)，然后是类型定义文件 (.d.ts)，最后是 JavaScript 文件 (.js 或 .jsx)。
+    // package.json:
+    // 如果导入的是一个包（比如 import * as express from "express";），解析器首先会查找对应 node_modules/express/package.json 文件。
+    // 在 package.json 中，解析器会寻找 main 字段指定的入口文件。如果没有 main 字段，解析器默认会查找 index.js。
+
+
+    // 允许导入 JSON 模块。js里面import json文件会报错，tsconfig里面设置这个就可以了。
+    // webpack默认也支持json，所以webpack不需要设置这个
+    "resolveJsonModule": true,
+
+    // 防止意外出现非转换语句的情况，确保只导出声明。
+    "isolatedModules": true,
+
+    "jsx": "react",
+    // "preserve"：不转换 JSX 代码，保留为 .jsx 文件输出。这是为了后续的转换步骤（如通过 Babel 转换）。
+    // "react"：将 JSX 转换成 React.createElement 调用，这适合 React 项目。此选项是最常用的，并且在 React <17 的时代中是标准做法。
+    // "react-native"：类似于 "preserve"，它也保持 JSX，但是文件扩展名为 .js。
+    // "react-jsx"：适用于 React 17+ 版本。在新的 JSX 转换中，不再需要导入 React 来使用 JSX。这是因为 React 17 引入了新的 JSX 转换。
+    // "react-jsxdev"：与 "react-jsx" 类似，但是添加了额外的开发时检查。这通常用于开发环境。
+
+
+    // 用于解析非相对模块名称的基目录。
+    "baseUrl": ".",
+
+    // 路径映射，用于设置模块导入路径别名。
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src"]
+}

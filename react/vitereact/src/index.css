@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+*,
+::before,
+::after {
+  border-width: 0;
+  border-style: solid;
+}
+
+.ant-menu-submenu.ant-menu-submenu-popup.ant-menu {
+  @apply !bg-[#0051dd];
+}
+
+[data-theme-override] .ant-menu.ant-menu-sub.ant-menu-inline,
+.ant-menu.ant-menu-sub.ant-menu-vertical {
+  @apply !bg-inherit;
+}
+
+[data-theme-override] .ant-layout-sider-trigger {
+  @apply !w-56 !bg-[#0051dd] !transition-none 3xl:!w-96;
+}
+
+[data-theme-override][data-collapsed="true"] .ant-layout-sider-trigger {
+  @apply !w-12;
+}
+
+.ant-pro-form-group-title {
+  margin-bottom: 10px;
+}
+
+/* antd Spin loading组件居中 */
+.ant-spin {
+  max-height: none !important;
+}
+
+
+.centered-div {
+  margin: 0 auto;   /* 上下为0，左右自动（实现居中） */
+  padding: 0 100px; /* 左右内边距为100px */
+}
+
+.break-anywhere {
+  word-break: break-all;
+}
+
+.yscoll {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  -ms-overflow-style: none;  /* IE 和 Edge */
+}
+
+.yscoll::-webkit-scrollbar {
+  display: none;
+}
+
+.ant-pro-table-column-setting-list-item-title{
+  max-width: 180px;
+}
+.ant-pro-table-column-setting-list-item-title span.ant-typography.ant-typography-ellipsis.ant-typography-ellipsis-single-line{
+  width:160px !important;
+}
+.ant-pro-table-column-setting-overlay .ant-popover-inner-content{
+  width: 300px;
+}

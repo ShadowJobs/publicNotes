@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>precompile</title>
+  <script>
+    function fn(a) {
+      console.log(a)
+      var a = 123
+      console.log(a)
+      function a() { }
+      console.log(a)
+      var b = function () { }
+      console.log(b)
+      function d() { }
+    }
+    fn(1)
+    document.write(fn)
+
+    function test(){
+      var a=b=123;
+      console.log(window.a)
+      console.log(window.b)
+
+    }
+    test()
+    document.write("<br/>")
+    document.write(test)
+  </script>
+  <script>
+    global=100;
+    function fn2(){
+      console.log(global)
+      global=200;
+      console.log(global)
+      var global=300;
+    }
+    fn2()
+    var global
+  </script>
+
+</head>
+
+<body>
+  
+  <div style="border: 1px solid black;">
+    <ol>
+      1 预编译步骤：创建ao对象
+      <li>参数和变量声明，并放到ao里，值为undefined ,参数a，变量a，和变量b，两个a重复了，只保留一个得到了ao={a:undefined,b:undefined} 
+        <b>这就是变量提升这一步</b>
+        <br/>注意function a()和var b=function含义不一样，一个是声明一个函数，一个是声明一个变量
+        <br/>ao有会先在ao找，没有再去go找
+        <br/>变量提升不会因为if而跳过，但是赋值会跳过
+        <br/>fn(){return f;function f(){}} console.log(fn())得到的是function，不会因为return而跳过
+      </li>
+      <li>将实参和形参统一，得到ao:{a:1,b:undefined}</li>
+      <li>找到函数体里的嵌套函数声明，值赋予函数体。此时找到a和d（注意没有b）,得到ao={a:function,b:undefined,d:function(){}}</li>
+    </ol>
+  </div>
+  <div style="border: 1px solid black;">
+    2，执行：
+    <ol>
+      <li>执行console.log(a)，直接到ao对象里找，输出function</li>
+      <li>执行var a=123，在预编译里已经处理了声明，var a,但是没有处理赋值。此时执行阶段会处理赋值：修改ao对象，ao变为{a:123,b:undefined,d:function(){}}</li>
+      <li>执行console.log(a)，会在ao对象里找a，此时为123</li>
+      <li>执行function a(){}，函数声明，在预编译阶段处理过了，跳过</li>
+      <li>执行console.log(a)，会在ao对象里找a,依然输出 123</li>
+      <li>执行var b=function(){},var b在预编译阶段处理，赋值在执行阶段处理，得到ao为{a:123,b:function,d:function(){}}</li>
+      <li>执行console.log(b),输出function</li>
+      <li>.....</li>
+      
+    </ol>
+  </div>
+  <div style="border: 1px solid black;">
+    test()的执行,注意这里的b是全局变量，不是局部变量,
+    因为b没有经过var b的声明，就会直接挂到全局go,即  window上，而a在函数自己的ao上，所以window上有a,没有b
+  </div>
+  <div style="border: 1px solid black;">
+    第三块，输出undefined,200,因为fn2里有var global，所以会先提升，设置为ao里的global为undefined，第一个输出优先找ao里的global
+  </div>
+</body>
+
+</html>

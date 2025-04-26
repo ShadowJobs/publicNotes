@@ -1,0 +1,32 @@
+{
+  "name": "react16-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev1": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index1.js ",
+    "dev2": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index2.js",
+    "dev3": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index3.js",
+    "dev4": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index4.js",
+    "dev5": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index5.js",
+    "dev6": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index6.js",
+    "dev7": "webpack serve --mode development --config ./webpack.config.js --entry ./src/index7.js",
+    "build": "webpack --mode production --config ./webpack.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.22.1",
+    "@babel/plugin-transform-react-jsx": "^7.22.3",
+    "@babel/preset-env": "^7.22.4",
+    "babel-loader": "^9.1.2",
+    "html-webpack-plugin": "^5.5.1",
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.1",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "dependencies": {
+    "react": "16.8.6"
+  }
+}
